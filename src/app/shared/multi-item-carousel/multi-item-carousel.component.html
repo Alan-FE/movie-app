@@ -1,0 +1,28 @@
+<div class="carousel">
+    <p-carousel *ngIf="movies.length !== 0" [value]="movies" [numVisible]="6" [numScroll]="1" [circular]="false" 
+    [responsiveOptions]="responsiveOptions">
+        <ng-template pTemplate="header">
+            <h3 class="text-white ml-3">{{ genre }}</h3>
+        </ng-template>
+        <ng-template let-movie pTemplate="item">
+            <div class="product-item">
+                <div class="product-item-content p-0">
+                    <div class="mb-3">
+                        <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w342' + movie.poster_path" 
+                        alt="poster-image" class="product-image w-100" />
+
+                        <img *ngIf="movie.poster_path ==''" src="../../assets/no-image.svg" class="product-image" 
+                        alt="poster image">
+                    </div>
+                    <div>
+                        <h6 class="mb-1">{{movie.title}}</h6>
+                        <span>{{ movie.release_date | date: 'mediumDate' }}</span>
+                        <span class="movie-rating badge rounded-pill bg-dark" 
+                [ngClass] = "movie.vote_average > 6 ? 'text-warning' : 'text-danger' ">
+                        <i class="fas fa-star"></i> {{ movie.vote_average | number: '1.0-1' }}</span>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-carousel>
+</div>

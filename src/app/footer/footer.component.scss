@@ -1,0 +1,12 @@
+@import '../../colors';
+
+footer {
+    background-color: $primary-dark-color;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 54px;
+    line-height: 54px;
+    font-size: .8em;
+}

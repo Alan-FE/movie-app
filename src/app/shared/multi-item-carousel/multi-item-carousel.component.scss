@@ -1,0 +1,36 @@
+.carousel {
+    margin: 2rem 0px;
+
+    .product-item {
+        color: white;
+        height: 100%;
+
+        .product-item-content {
+            position: relative;
+            border: 1px solid var(--surface-d);
+            border-radius: 3px;
+            margin: .3rem;
+            text-align: center;
+            padding: 2rem 0;
+            height: 98%;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #e9ecef;
+                color: black;
+            };
+        };
+
+        .product-image {
+            width: 75%;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+        };
+    };
+};
+
+.movie-rating {
+    position: absolute; 
+    top: 15px; 
+    left: 15px;
+    font-size: 14px;
+};
