@@ -1,0 +1,13 @@
+@import '../../stylization';
+
+.heading {
+    @extend %heading;
+};
+
+.spinner-container {
+    @extend %spinner-style;
+};
+
+.search-results {
+    height: calc(100vh - 7rem);
+};

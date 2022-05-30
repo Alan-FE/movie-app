@@ -1,0 +1,56 @@
+@import '../../stylization';
+
+.movie-page {
+    background-size: cover;
+    background-repeat: no-repeat;
+    .movie-details {
+        background-image: linear-gradient(to right, rgb(184, 198, 219) 150px, rgb(245, 247, 250, 0.84) 100%);
+
+        .comma ~ .comma::before{
+            content: ", ";
+        };
+        
+        .genre a {
+            font-size: 1.2rem;
+        }
+    };
+};
+
+.rating {
+    display: flex;
+    justify-content: center;
+    
+    div {
+        font-size: 12px;
+    }
+};
+
+.favorite-container {
+    cursor: pointer;
+    height: 30px;
+};
+
+.youtube-player {
+    height: 250px;
+};
+
+.spinner-container {
+    @extend %spinner-style;
+}
+
+@media (min-width: 576px) {
+    .youtube-player {
+        height: 300px;
+    };
+};
+
+@media (min-width: 992px) {
+    .youtube-player {
+        height: 500px;
+    };
+    .rating {
+        div {
+            font-size: 17px;
+        };
+    };
+};

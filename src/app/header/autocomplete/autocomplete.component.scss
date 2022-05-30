@@ -1,0 +1,21 @@
+.autocomplete-container {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    width: 285px;
+    max-height: 400px;
+    background-color: #fff;
+    overflow-y: auto;
+    z-index: 2;
+    padding: 3px;
+}
+
+.autocomplete {
+    cursor: pointer;
+    padding: 12px 0px;
+
+    &:hover {
+        background-color: black;
+        color: white;
+    }
+}

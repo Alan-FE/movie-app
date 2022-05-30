@@ -1,0 +1,102 @@
+<div *ngIf="loaded; else spinner">
+    <div  class="movie-page" *ngIf="movieDetails" [style.backgroundImage]="movieDetails.backdrop_path ? 
+'url(https://image.tmdb.org/t/p/original' + movieDetails.backdrop_path +')' : 'url(../../assets/no-image.svg)'">
+
+    <div class="movie-details container-fluid">
+        <div class="row justify-content-center py-3">
+            <div class="col-7 col-sm-5 col-md-3 text-center">
+
+                <img *ngIf="movieDetails.poster_path"
+                    [src]="'https://image.tmdb.org/t/p/w342' + movieDetails.poster_path" alt="poster-image"
+                    class="w-100">
+
+                <img *ngIf="!movieDetails.poster_path" src="../../assets/no-poster-image.svg" alt="poster image"
+                    class="w-100">
+
+                <div class="rating my-3 mt-md-3">
+                    <div class="badge bg-dark text-warning">
+                        <i class="p-1" *ngFor="let rating of ratingArray; let i = index" [ngClass]="showStars(i)"></i>
+                        <span class="ps-2">{{ movieDetails.vote_average }}/10</span>
+                    </div>
+                </div>
+
+                <div class="favorite-container" (click)="addToFavorite()">
+                    <i class="fs-3 text-danger" [ngClass]="showHeart ? 'fas fa-heart' : 'far fa-heart'"></i>
+                </div>
+
+            </div>
+            <div class="col-12 col-md-8 align-self-center">
+
+                <h1 class="fw-bold">{{ movieDetails.title }}</h1>
+
+                <span> {{ movieDetails.release_date | date: 'mediumDate' }} |</span>
+                <span> {{ movieDetails.runtime | runtime }} |</span>
+                <span class="comma" *ngFor="let productionCountry of movieDetails.production_countries">
+                    {{ productionCountry.name }}</span>
+
+                <div class="genre my-2">
+                    <a *ngFor="let genre of movieDetails.genres"
+                        routerLink="/genre/{{ genre.id }}/{{ genre.name | textTransform }}"
+                        class="text-decoration-none">
+                        <span class="badge bg-danger me-2">{{ genre.name }}</span>
+                    </a>
+                </div>
+
+                <ng-container *ngIf="movieDetails.tagline.length !== 0">
+                    <blockquote class="blockquote fst-italic text-muted my-2">
+                        <p>{{ movieDetails.tagline }}</p>
+                    </blockquote>
+                </ng-container>
+
+                <div class="movie-info">
+                    <h3 class="fw-bold">Overview</h3>
+                    <p>{{ movieDetails.overview }}</p>
+                </div>
+
+                <div class="actors my-3">
+                    <span class="fs-5 fw-bold">Starring: </span>
+                    <span class="comma fst-italic" *ngFor="let actor of movieDetails.credits.cast | limit: 10">
+                        {{ actor.name }}
+                    </span>
+                </div>
+
+                <p-button icon="pi pi-play" label="Play Trailer" (click)="playTrailer()"></p-button>
+
+                <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl">
+                        <div class="modal-content border-0">
+                            <div class="modal-header bg-dark border-0 p-3">
+                                <h5 class="modal-title text-white">Play Trailer</h5>
+                                <button type="button" class="btn-close btn-close-white" aria-label="Close"
+                                    (click)="close()"></button>
+                            </div>
+
+                            <div class="youtube-player">
+                                <iframe width="100%" height="100%" [src]="url | safeUrl" frameborder="0"
+                                    allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-container *ngIf="movieRecommended?.length > 6">
+    <app-multi-item-carousel [movies]="movieRecommended" [genre]="genre1"></app-multi-item-carousel>
+</ng-container>
+
+<ng-container *ngIf="movieSimilar?.length > 6">
+    <app-multi-item-carousel [movies]="movieSimilar" [genre]="genre2"></app-multi-item-carousel>
+</ng-container>
+</div>
+
+<ng-template #spinner>
+    <div class="d-flex justify-content-center spinner-container align-items-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</ng-template>

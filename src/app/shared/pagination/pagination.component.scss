@@ -1,0 +1,11 @@
+@import '../../../colors';
+
+.page-item a{
+    cursor: pointer;
+    color: $primary-dark-color;
+}
+
+.active-page a {
+    background-color: $primary-dark-color;
+    color: white;
+}

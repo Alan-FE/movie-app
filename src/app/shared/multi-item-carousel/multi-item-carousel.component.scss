@@ -1,3 +1,5 @@
+@import '../../../colors';
+
 .carousel {
     margin: 2rem 0px;
 
@@ -7,23 +9,24 @@
 
         .product-item-content {
             position: relative;
-            border: 1px solid var(--surface-d);
+            border: 1px solid rgb(245, 247, 250, 0.84);
             border-radius: 3px;
             margin: .3rem;
             text-align: center;
             padding: 2rem 0;
             height: 98%;
+            background-color: $secondary-light-color;
+            color: #000000;
 
             &:hover {
                 cursor: pointer;
                 background-color: #e9ecef;
-                color: black;
             };
         };
 
         .product-image {
             width: 75%;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
         };
     };
 };
@@ -33,4 +36,9 @@
     top: 15px; 
     left: 15px;
     font-size: 14px;
+};
+
+.link {
+    text-decoration: none;
+    color: inherit;
 };

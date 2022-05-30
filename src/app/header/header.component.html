@@ -1,14 +1,14 @@
 <nav class="navbar navbar-expand-lg navbar-dark custom-color">
     <div class="container-fluid">
         <a class="navbar-brand" href="/">Movies</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+            aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbar">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -16,10 +16,9 @@
                         Movies
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Popular</a></li>
-                        <li><a class="dropdown-item" href="#">Now Playing</a></li>
-                        <li><a class="dropdown-item" href="#">Upcoming</a></li>
-                        <li><a class="dropdown-item" href="#">Top rated</a></li>
+                        <li *ngFor="let category of categories">
+                            <a class="dropdown-item" routerLink="/category/{{ category | textTransform }}">{{ category }}</a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -28,21 +27,27 @@
                         Genres
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li *ngFor="let genre of genres"><a class="dropdown-item" href="#" (click)="selectGenre(genre.id)">
+                        <li *ngFor="let genre of genres">
+                            <a class="dropdown-item" routerLink="/genre/{{ genre.id }}/{{ genre.name | textTransform }}">
                             {{ genre.name }}</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Favorites</a>
+                    <a class="nav-link" routerLink="/favorites">Favorites</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Visited</a>
+                    <a class="nav-link" routerLink="/visited">Visited</a>
                 </li>
             </ul>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn custom-btn" type="submit">Search</button>
+                <input class="form-control me-2" type="search" placeholder="Search movies" aria-label="Search" name="value"
+                [(ngModel)]="value" (focus)="onFocus()" autocomplete="off" #inpt>
+                <button class="btn custom-btn" type="submit" (click)="search()">Search</button>
             </form>
         </div>
     </div>
 </nav>
+
+<div class="tag-container" *ngIf="show">
+    <app-autocomplete [value]="value"></app-autocomplete>
+</div>

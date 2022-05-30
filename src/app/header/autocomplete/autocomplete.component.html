@@ -1,0 +1,35 @@
+<ng-container *ngIf="movieList.length !==0">
+
+    <div class="autocomplete-container">
+
+        <div class="container">
+    
+            <div class="row autocomplete" *ngFor="let movie of movieList" 
+            routerLink="/movie/{{movie.id}}/{{movie.title | textTransform}}">
+                
+                <div class="col-3">
+                    <img *ngIf="movie.poster_path" class="card-img-top d-inline-block" [src]="'https://image.tmdb.org/t/p/w154' + 
+                    movie.poster_path" alt="Poster">
+                    <img *ngIf="!movie.poster_path" class="card-img-top" 
+                    src="../../assets/no-poster-image.svg" alt="poster image">
+                </div>
+        
+                <div class="col-9">
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="fw-bold">{{ movie.title }} </span>
+                        </div>
+                        <div class="col-12">
+                            Film | Imdb: <span [ngClass] = "movie.vote_average > 6 ? 'text-warning' : 'text-danger' "> 
+                                <i class="fas fa-star"></i></span> {{ movie.vote_average }}/10
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+        
+        </div>
+    
+    </div>
+
+</ng-container>

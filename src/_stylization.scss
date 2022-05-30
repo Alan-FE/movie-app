@@ -1,0 +1,17 @@
+@import './colors';
+
+%heading {
+    text-align: center;
+    margin: 1rem 0px;
+    color: white;
+};
+
+%spinner-style {
+    height: calc(100vh - 7rem);
+    
+    div {
+        color: $primary-light-color;
+        width: 6rem;
+        height: 6rem;
+    }
+}

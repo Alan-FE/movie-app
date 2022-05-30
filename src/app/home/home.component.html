@@ -1,24 +1,36 @@
-<div id="movie" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item" *ngFor="let movie of popularMovies; let i = index" [ngClass]="{'active': i == 0 }">
-            <img *ngIf="movie.backdrop_path" [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path" 
-            class="d-block w-100" alt="movie photo">
-            <img *ngIf="movie.backdrop_path ==''" src="../../assets/no-image.svg" class="d-block w-100" alt="movie photo">
-            <div class="carousel-caption rounded">
-                <h5 class="pt-2">{{ movie.title }}</h5>
-                <p class="d-none d-sm-block">{{ movie.overview }}</p>
+<div *ngIf="loaded; else spinner">
+
+    <div id="movie" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item" *ngFor="let movie of popularMovies; let i = index" [ngClass]="{'active': i == 0 }">
+                <img *ngIf="movie.backdrop_path" [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path" 
+                class="d-block w-100" alt="movie photo">
+                <img *ngIf="!movie.backdrop_path" src="../../assets/no-image.svg" class="d-block w-100" alt="movie photo">
+                <div class="carousel-caption rounded">
+                    <h5 class="pt-2">{{ movie.title }}</h5>
+                    <p class="d-none d-sm-block">{{ movie.overview }}</p>
+                </div>
             </div>
         </div>
+        <button class="carousel-control-prev" type="button"  data-bs-target="#movie" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button"  data-bs-target="#movie" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+        </button>
     </div>
-    <button class="carousel-control-prev" type="button"  data-bs-target="#movie" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button"  data-bs-target="#movie" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-    </button>
+
+    <app-multi-item-carousel [movies]="popularMovies" [genre]="genre1"></app-multi-item-carousel>
+    <app-multi-item-carousel [movies]="topRated" [genre]="genre2"></app-multi-item-carousel>
+
 </div>
 
-<app-multi-item-carousel [movies]="popularMovies" [genre]="genre1"></app-multi-item-carousel>
-<app-multi-item-carousel [movies]="topRated" [genre]="genre2"></app-multi-item-carousel>
+<ng-template #spinner>
+    <div class="d-flex justify-content-center spinner-container align-items-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</ng-template>

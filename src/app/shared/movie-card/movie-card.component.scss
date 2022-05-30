@@ -1,0 +1,43 @@
+@import '../../../colors';
+
+.movie-rating {
+    position: absolute; 
+    top: 15px; 
+    left: 15px;
+    font-size: 14px;
+};
+
+.card {
+    background-color: $secondary-light-color;
+    border: 1px solid rgb(245, 247, 250, 0.84);
+    border-radius: 3px;
+    transition: all 0.5s ease;
+
+    &:hover {
+        cursor: pointer;
+        background-color: #e9ecef;
+        color: black;
+        transform: scale(1.07)
+    };
+
+    .poster {
+        box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%)
+    }
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+
+}
+
+.movie-favorite {
+    position: absolute; 
+    top: 15px; 
+    right: 15px;
+    font-size: 14px;
+
+    &:hover {
+        cursor: pointer;
+    };
+};

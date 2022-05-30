@@ -1,0 +1,12 @@
+@import '../../stylization';
+
+@import '../../colors';
+
+.heading {
+    @extend %heading;
+};
+
+.custom-btn {
+    background-color: $primary-light-color;
+    color: white;
+};

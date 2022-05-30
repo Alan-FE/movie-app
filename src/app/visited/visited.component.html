@@ -1,0 +1,12 @@
+<h1 class="heading">Visited Movies</h1>
+<div class="text-center" *ngIf="visitedMovies.length !== 0">
+    <button class="btn btn-danger btn-lg" (click)="clear()">Clear history</button>
+</div>
+
+<ng-container *ngIf="visitedMovies.length == 0">
+    <h4 class="text-center text-light">You haven't visited any movies yet</h4>
+</ng-container>
+
+<app-movie-card [movies]="visitedMovies | limit: moviesPerPage" [title]="'Visited'"></app-movie-card>
+
+<button *ngIf="!hide" class="btn custom-btn mx-auto d-block my-2" (click)="loadMore()">Load more</button>

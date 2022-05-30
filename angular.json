@@ -29,14 +29,14 @@
             "assets": [
               "src/movie.png",
               "src/assets",
-              "src/assets/no-image.svg"
+              "src/assets/no-image.svg",
+              "src/assets/no-image-poster.svg"
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.scss",
               "node_modules/primeng/resources/themes/saga-blue/theme.css",
               "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/primeflex/primeflex.css",
               "node_modules/primeicons/primeicons.css"
             ],
             "scripts": [

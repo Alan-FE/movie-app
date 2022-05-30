@@ -1,0 +1,34 @@
+<div class="container mb-3">
+    <div class="row row-cols-1 m-3 m-sm-0 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 g-4">
+        
+        <div class="col" *ngFor="let movie of movies; let i = index">
+            <div class="card h-100">
+                <a routerLink="/movie/{{movie.id}}/{{movie.title | textTransform}}">
+                    <img *ngIf="movie.poster_path" [src]="'https://image.tmdb.org/t/p/w342' + movie.poster_path" 
+                    class="card-img-top poster" alt="poster image">
+
+                    <img *ngIf="!movie.poster_path" src="../../assets/no-poster-image.svg" class="card-img-top poster" 
+                    alt="poster image">
+                </a>
+                <div class="card-body">
+                    <a routerLink="/movie/{{movie.id}}/{{movie.title | textTransform}}">
+                        <h5 class="card-title">{{ movie.title | shorten }}</h5>
+                        <span>{{ movie.release_date | date: 'mediumDate' }}</span>
+                                <span class="movie-rating badge rounded-pill bg-dark" 
+                        [ngClass] = "movie.vote_average > 6 ? 'text-warning' : 'text-danger' ">
+                                <i class="fas fa-star"></i> {{ movie.vote_average | number: '1.0-1' }}
+                        </span>
+                    </a>
+                    <ng-container *ngIf="show">
+                        <span class="movie-favorite badge rounded-pill bg-dark text-danger">
+                                <i class="fas fa-heart" (click)="removeFavorite(i, movie)" title="Remove from favorite"></i> 
+                        </span>
+                    </ng-container>
+                </div>
+            </div>
+           
+        </div>
+        
+    </div>
+</div>
+

@@ -19,6 +19,11 @@ export class MultiItemCarouselComponent {
             numScroll: 1
         },
         {
+          breakpoint: '992px',
+          numVisible: 4,
+          numScroll: 1
+        },
+        {
             breakpoint: '768px',
             numVisible: 2,
             numScroll: 2

@@ -1,5 +1,6 @@
+@import '../../stylization';
+
 .carousel-inner {
-    
     .carousel-item {
         max-height: 580px;
 
@@ -11,3 +12,7 @@
         };
     };
 };
+
+.spinner-container {
+    @extend %spinner-style;
+}

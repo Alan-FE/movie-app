@@ -1,0 +1,30 @@
+<div *ngIf="totalItems > 0" class="d-flex justify-content-center mt-3">
+  <ul class="pagination">
+    <li class="page-item" [ngClass]="{'disabled': isFirst}">
+     <a class="page-link"
+      (click)="previous()">Previous</a>
+    </li>
+
+    <ng-container *ngIf="activePage >= 5">
+      <li class="page-item"><a class="page-link" 
+        (click)="changePage(1)">1</a></li>
+      <li class="page-item"><a class="page-link" 
+        (click)="changePage(activePage - 3)">...</a></li>
+    </ng-container>
+
+    <li *ngFor="let page of displayPages"
+    [ngClass]="{'active-page': activePage == page}" 
+    class="page-item"><a class="page-link" (click)="changePage(page)">{{ page }}</a></li>
+
+    <ng-container  *ngIf="(allPages.length - activePage) > 3">
+      <li class="page-item"><a class="page-link" 
+        (click)="changePage(activePage + 3)">...</a></li>
+      <li class="page-item"><a class="page-link" 
+        (click)="changePage(allPages.length)">{{ allPages.length }}</a></li>
+    </ng-container>
+
+    <li class="page-item" [ngClass]="{'disabled': isLast}">
+      <a class="page-link" (click)="next()">Next</a>
+    </li>
+  </ul>
+</div>

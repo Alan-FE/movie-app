@@ -1,0 +1,13 @@
+<div *ngIf="loaded; else spinner">
+    <h1 class="heading">Movie Genre - {{ title | titlecase}}</h1>
+    <app-movie-card [movies]="movieGenre" [title]="title"></app-movie-card>
+    <app-pagination [itemsPerPage]="itemsPerPage" [totalItems]="totalItems" (pageChange)="onPageChange($event)"></app-pagination>
+</div>
+
+<ng-template #spinner>
+    <div class="d-flex justify-content-center spinner-container align-items-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</ng-template>

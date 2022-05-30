@@ -1,0 +1,9 @@
+@import '../../stylization';
+
+.heading {
+    @extend %heading;
+};
+
+.spinner-container {
+    @extend %spinner-style;
+};

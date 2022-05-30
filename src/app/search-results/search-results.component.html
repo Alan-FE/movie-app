@@ -1,0 +1,19 @@
+<div *ngIf="loaded; else spinner">
+    <h1 class="heading">Search Results</h1>
+    <app-movie-card [movies]="searchResults" [title]="'Searched'"></app-movie-card>
+</div>
+
+<ng-template #spinner>
+    <div class="d-flex justify-content-center spinner-container align-items-center">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</ng-template>
+
+<div *ngIf="searchResults.length === 0" class="search-results d-flex align-items-center justify-content-center text-light">
+    <div class="text-center">
+        <h4 class="display-5 fw-bold">Oops! No Matches</h4>
+        <p class="lead">Try looking for something different</p>
+    </div>
+</div>

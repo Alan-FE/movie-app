@@ -1,0 +1,13 @@
+<h1 class="heading">Favorite Movies</h1>
+<div class="text-center" *ngIf="favoriteMovies.length !== 0">
+    <button class="btn btn-danger btn-lg" (click)="clearAll()">Clear all</button>
+</div>
+
+<ng-container *ngIf="favoriteMovies.length == 0">
+        <div class="text-center">
+            <h4>Your favorite list is empty!</h4>
+        </div>
+</ng-container>
+
+<app-movie-card [movies]="favoriteMovies | limit: moviesPerPage" [show]="true"></app-movie-card>
+<button *ngIf="!hide" class="btn custom-btn mx-auto d-block my-2" (click)="loadMore()">Load more</button>
