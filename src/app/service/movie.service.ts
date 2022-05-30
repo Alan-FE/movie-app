@@ -8,9 +8,11 @@ import { forkJoin, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class MovieService {
-  key = environment.apiKey;
+  key: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.key = '844b50e559aa60c1aaa9697b2be52919';
+  }
 
   getMovies(): Observable<any> {
     let req1 = this.http.get(`https://api.themoviedb.org/3/movie/popular?api_key=${this.key}`);
