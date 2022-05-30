@@ -1,4 +1,5 @@
 @import '../../stylization';
+@import '../..//colors';
 
 .movie-page {
     background-size: cover;
@@ -12,6 +13,10 @@
         
         .genre a {
             font-size: 1.2rem;
+        };
+
+        .play-btn {
+            @extend %btn-style
         }
     };
 };

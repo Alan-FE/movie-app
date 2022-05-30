@@ -16,12 +16,13 @@ export class FavoritesComponent implements OnInit {
 
   ngOnInit(): void {
     this.favoriteMovies = this.localStorageService.readData(this.key);
+    this.favoriteMovies.length > 10 ? this.hide = false : this.hide = true;
   };
 
   clearAll() {
+    this.hide = true;
     this.favoriteMovies = [];
     this.localStorageService.removeData(this.key);
-    this.favoriteMovies.length > 10 ? this.hide = false : this.hide = true;
   };
   
   loadMore() {

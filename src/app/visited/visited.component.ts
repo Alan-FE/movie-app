@@ -20,6 +20,7 @@ export class VisitedComponent implements OnInit {
   };
 
   clear() {
+    this.hide = true;
     this.visitedMovies = [];
     this.localStorageService.removeData(this.key);
   };

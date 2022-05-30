@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges, ViewContainerRef } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MovieService } from 'src/app/service/movie.service';
 
 @Component({
@@ -10,11 +10,7 @@ export class AutocompleteComponent implements OnChanges {
   @Input() value: string = '';
   movieList: any[] = [];
 
-  constructor( private movieService: MovieService,
-               private viewContainerRef: ViewContainerRef ) {
-                 const injector = this.viewContainerRef.injector;
-                 console.log(injector)
-               }
+  constructor( private movieService: MovieService ) { }
 
   ngOnChanges(changes: SimpleChanges): void {
     let enteredValue: string = changes['value'].currentValue;

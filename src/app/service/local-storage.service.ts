@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Injectable({
   providedIn: 'root'
 })
 export class LocalStorageService {
+
+  constructor(private toastr: ToastrService) {}
 
 
 addOrRemove(movie: any):void {  
@@ -16,18 +20,21 @@ addOrRemove(movie: any):void {
       if(favoritesArray[i].id === movie.id && favoritesArray.length === 1) {
           localStorage.removeItem('favorites');
           isExist = true;
+          this.toastr.error('Removed from favorites', 'Notification');
       };
 
       if(favoritesArray[i].id === movie.id && favoritesArray.length > 1) {
           favoritesArray.splice(i, 1);
           localStorage.setItem('favorites', JSON.stringify(favoritesArray));
           isExist = true;
+          this.toastr.error('Removed from favorites', 'Notification');
         };
     };
 
     if(!isExist) {
         favoritesArray.push(movie);
         localStorage.setItem('favorites', JSON.stringify(favoritesArray));
+        this.toastr.success('Added to favorites', 'Notification');
     };
 };
 
@@ -57,6 +64,6 @@ readData(key: string): any {
 
 removeData(key: string): any {
   localStorage.removeItem(key);
-}
+};
 
 }

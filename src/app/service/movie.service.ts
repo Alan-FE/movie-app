@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
-import { environment } from 'src/environments/environment';
 import { forkJoin, Observable } from 'rxjs';
 
 @Injectable({
@@ -40,7 +39,7 @@ export class MovieService {
   };
 
   getMovieTrailer(id: number): Observable<any> {
-    return this.http.get(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${this.key}`);
+    return this.http.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${this.key}`);
   };
 
   getMovieCategory(category: string, page: number): Observable<any> {

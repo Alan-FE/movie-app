@@ -1,11 +1,11 @@
 @import '../../colors';
+@import '../../stylization';
 
 .custom-color {
     background-color: $primary-dark-color;
 };
 .custom-btn {
-    background-color: $primary-light-color;
-    color: white;
+    @extend %btn-style;
 };
 
 .tag-container {

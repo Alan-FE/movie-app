@@ -26,12 +26,12 @@ export class MultiItemCarouselComponent {
         {
             breakpoint: '768px',
             numVisible: 2,
-            numScroll: 2
+            numScroll: 1
         },
         {
-            breakpoint: '560px',
-            numVisible: 1,
-            numScroll: 1
+          breakpoint: '400px',
+          numVisible: 1,
+          numScroll: 1
         }
     ];
   };

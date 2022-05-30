@@ -8,6 +8,8 @@ import { CarouselModule } from 'primeng/carousel';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 
+import { ToastrModule } from 'ngx-toastr';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -63,7 +65,8 @@ import { LimitPipe } from './pipe/limit.pipe';
     BrowserAnimationsModule,
     CarouselModule,
     DialogModule,
-    ButtonModule
+    ButtonModule,
+    ToastrModule.forRoot()
   ],
   providers: [TextTransformPipe],
   bootstrap: [AppComponent]

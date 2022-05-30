@@ -60,7 +60,9 @@
                     </span>
                 </div>
 
-                <p-button icon="pi pi-play" label="Play Trailer" (click)="playTrailer()"></p-button>
+                <button class="btn play-btn"(click)="playTrailer()">
+                    <i class="fab fa-youtube"></i> Play Trailer
+                </button>
 
                 <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modal" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered modal-xl">
